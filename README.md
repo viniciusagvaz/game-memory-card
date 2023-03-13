@@ -1,6 +1,6 @@
 <h1>This is a memory-card game by Ania Kubów</h1>
 
-It's the second functional game that I'll be learning for the next days to a total of seven games that will be taught at this course.
+It's the second functional game that I'll be learning for the next few days a total of seven games will be taught in this course.
 <hr>
 <div>
 <h3>JavaScript Properties and Methods cover:</h3>
