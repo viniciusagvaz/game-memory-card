@@ -59,17 +59,16 @@ function initializeGame() {
   cardArray.forEach((card, index) => {
     const cardElement = createCardElement({ ...card, id: index });
     cardElement.addEventListener("click", handleCardClick);
+    cardElement.addEventListener("touchstart", handleCardClick, { passive: false });
     gridDisplay.appendChild(cardElement);
   });
 }
 
 function handleCardClick(event) {
-  if (
-    !card ||
-    cardsChosenIds.includes(card.getAttribute("data-id")) ||
-    cardsChosen.length >= 2
-  )
-    return;
+  event.preventDefault();
+  
+  const card = event.target.closest('.card');
+  if (!card || cardsChosenIds.includes(card.getAttribute("data-id")) || cardsChosen.length >= 2) return;
 
   const cardId = card.getAttribute("data-id");
   flipCard(card);
@@ -107,6 +106,7 @@ function evaluateMatch() {
     const cardName = cardsChosen[0].getAttribute("name");
     cardsChosen.forEach((card) => {
       card.removeEventListener("click", handleCardClick);
+      card.removeEventListener("touchstart", handleCardClick);
       card.setAttribute("matched", "true");
     });
     markReferenceAsMatched(cardName);
