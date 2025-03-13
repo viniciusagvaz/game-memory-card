@@ -2,51 +2,51 @@
   "cards": [
     {
       "name": "aquarius",
-      "img": "icons/aquarius.svg"
+      "img": "./icons/aquarius.svg"
     },
     {
       "name": "pisces",
-      "img": "icons/pisces.svg"
+      "img": "./icons/pisces.svg"
     },
     {
       "name": "aries",
-      "img": "icons/aries.svg"
+      "img": "./icons/aries.svg"
     },
     {
       "name": "taurus",
-      "img": "icons/taurus.svg"
+      "img": "./icons/taurus.svg"
     },
     {
       "name": "gemini",
-      "img": "icons/gemini.svg"
+      "img": "./icons/gemini.svg"
     },
     {
       "name": "cancer",
-      "img": "icons/cancer.svg"
+      "img": "./icons/cancer.svg"
     },
     {
       "name": "leo",
-      "img": "icons/leo.svg"
+      "img": "./icons/leo.svg"
     },
     {
       "name": "virgo",
-      "img": "icons/virgo.svg"
+      "img": "./icons/virgo.svg"
     },
     {
       "name": "libra",
-      "img": "icons/libra.svg"
+      "img": "./icons/libra.svg"
     },
     {
       "name": "scorpio",
-      "img": "icons/scorpio.svg"
+      "img": "./icons/scorpio.svg"
     },
     {
       "name": "sagittarius",
-      "img": "icons/sagittarius.svg"
+      "img": "./icons/sagittarius.svg"
     },
     {
       "name": "capricorn",
-      "img": "icons/capricorn.svg"
+      "img": "./icons/capricorn.svg"
     }
   ]
 }

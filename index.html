@@ -4,17 +4,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Memory Game" />
+    <meta name="author" content="Vinicius Vaz" />
+    <meta name="keywords" content="Memory Game" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
     <title>Memory Game</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <div id="reference-grid"></div>
-    <h3>Score:<span id="result"></span></h3>
-    <h1 id="victory-message" class="victory-message hidden">Congratulations! You found all matches!</h1>
-    <div id="grid"></div>
-    <div class="button-container">
-      <button id="play-again" class="play-again-btn">Play Again</button>
-    </div>
+    <header>
+      <div id="reference-grid" />
+    </header>
+
+    <main>
+      <h3>
+        Score:
+        <span id="result"></span>
+      </h3>
+      <h1 id="victory-message" class="victory-message hidden">
+        Congratulations! You found all matches!'
+      </h1>
+      <div class="button-container">
+        <button id="play-again" class="play-again-btn hidden">
+          Play Again
+        </button>
+      </div>
+      <div id="grid" />
+    </main>
+
+    <footer>
+      <p>
+        Developed by
+        <a href="https://github.com/viniciusagvaz"> Vinicius Vaz </a>
+      </p>
+    </footer>
     <script type="module" src="app.js"></script>
   </body>
 </html>

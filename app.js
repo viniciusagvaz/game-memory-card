@@ -1,70 +1,84 @@
-import { checkForMatch, createCardElement, flipCard, shuffleCards } from './gameLogic.js';
-import { ScoreManager } from './scoreManager.js';
+import {
+  checkForMatch,
+  createCardElement,
+  flipCard,
+  shuffleCards,
+} from "./gameLogic.js";
+import { ScoreManager } from "./scoreManager.js";
 
 let cardArray = [];
 let cardsChosen = [];
 let cardsChosenIds = [];
 const scoreManager = new ScoreManager();
-const playAgainBtn = document.querySelector('#play-again');
+const playAgainBtn = document.querySelector("#play-again");
 
 async function loadCards() {
   try {
-    const response = await fetch('./cards.json');
+    const response = await fetch("./cards.json");
     const data = await response.json();
-    // Create reference cards
+
     createReferenceGrid(data.cards);
-    // Create pairs by duplicating each card
     cardArray = [...data.cards, ...data.cards];
-    // Shuffle the cards
     cardArray = shuffleCards(cardArray);
-    // Disable play again button at start
     playAgainBtn.disabled = true;
     initializeGame();
   } catch (error) {
-    console.error('Error loading cards:', error);
+    console.error("Error loading cards:", error);
   }
 }
 
 function createReferenceGrid(cards) {
-  const referenceGrid = document.querySelector('#reference-grid');
-  cards.forEach(card => {
-    const referenceCard = document.createElement('div');
-    referenceCard.classList.add('reference-card');
-    referenceCard.setAttribute('data-reference', card.name);
-    
-    const cardImage = document.createElement('img');
-    cardImage.setAttribute('src', card.img);
-    cardImage.setAttribute('alt', card.name);
-    
+  const referenceGrid = document.querySelector("#reference-grid");
+  cards.forEach((card) => {
+    const referenceCard = document.createElement("div");
+    referenceCard.classList.add("reference-card");
+    referenceCard.setAttribute("data-reference", card.name);
+
+    const cardImage = document.createElement("img");
+    cardImage.setAttribute("src", card.img);
+    cardImage.setAttribute("alt", card.name);
+
     referenceCard.appendChild(cardImage);
     referenceGrid.appendChild(referenceCard);
   });
 }
 
 function markReferenceAsMatched(cardName) {
-  const referenceCard = document.querySelector(`[data-reference="${cardName}"]`);
+  const referenceCard = document.querySelector(
+    `[data-reference="${cardName}"]`
+  );
   if (referenceCard) {
-    referenceCard.classList.add('matched');
+    referenceCard.classList.add("matched");
   }
 }
 
 function initializeGame() {
-  const gridDisplay = document.querySelector('#grid');
-  gridDisplay.innerHTML = '';
+  const gridDisplay = document.querySelector("#grid");
+  gridDisplay.innerHTML = "";
   scoreManager.resetScore();
-  
+
   cardArray.forEach((card, index) => {
     const cardElement = createCardElement({ ...card, id: index });
-    cardElement.addEventListener('click', handleCardClick);
+    cardElement.addEventListener("click", handleCardClick);
+    cardElement.addEventListener("touchstart", handleCardClick, {
+      passive: false,
+    });
     gridDisplay.appendChild(cardElement);
   });
 }
 
 function handleCardClick(event) {
-  const card = event.target.closest('.card'); // Get the card element
-  if (!card || cardsChosenIds.includes(card.getAttribute('data-id')) || cardsChosen.length >= 2) return;
+  event.preventDefault();
 
-  const cardId = card.getAttribute('data-id');
+  const card = event.target.closest(".card");
+  if (
+    !card ||
+    cardsChosenIds.includes(card.getAttribute("data-id")) ||
+    cardsChosen.length >= 2
+  )
+    return;
+
+  const cardId = card.getAttribute("data-id");
   flipCard(card);
   cardsChosen.push(card);
   cardsChosenIds.push(cardId);
@@ -75,44 +89,38 @@ function handleCardClick(event) {
 }
 
 function resetGame() {
-  // Clear the reference grid
-  const referenceGrid = document.querySelector('#reference-grid');
-  referenceGrid.innerHTML = '';
-  
-  // Clear the game grid
-  const gridDisplay = document.querySelector('#grid');
-  gridDisplay.innerHTML = '';
-  
-  // Reset score
+  const referenceGrid = document.querySelector("#reference-grid");
+  referenceGrid.innerHTML = "";
+
+  const gridDisplay = document.querySelector("#grid");
+  gridDisplay.innerHTML = "";
+
   scoreManager.resetScore();
-  
-  // Reset arrays
+
   cardsChosen = [];
   cardsChosenIds = [];
-  
-  // Disable play again button
+
   playAgainBtn.disabled = true;
-  
-  // Hide victory message
-  const victoryMessage = document.querySelector('#victory-message');
-  victoryMessage.classList.add('hidden');
-  victoryMessage.classList.remove('show');
-  
-  // Reload cards and start new game
+
+  const victoryMessage = document.querySelector("#victory-message");
+  victoryMessage.classList.add("hidden");
+  victoryMessage.classList.remove("show");
+
   loadCards();
 }
 
 function evaluateMatch() {
   if (checkForMatch(cardsChosen[0], cardsChosen[1])) {
-    const cardName = cardsChosen[0].getAttribute('name');
-    cardsChosen.forEach(card => {
-      card.removeEventListener('click', handleCardClick);
-      card.setAttribute('matched', 'true');
+    const cardName = cardsChosen[0].getAttribute("name");
+    cardsChosen.forEach((card) => {
+      card.removeEventListener("click", handleCardClick);
+      card.removeEventListener("touchstart", handleCardClick);
+      card.setAttribute("matched", "true");
     });
     markReferenceAsMatched(cardName);
     scoreManager.incrementScore();
   } else {
-    cardsChosen.forEach(card => {
+    cardsChosen.forEach((card) => {
       setTimeout(() => flipCard(card), 500);
     });
   }
@@ -120,20 +128,20 @@ function evaluateMatch() {
   cardsChosen = [];
   cardsChosenIds = [];
 
-  if (document.querySelectorAll('[matched="true"]').length === cardArray.length) {
+  if (
+    document.querySelectorAll('[matched="true"]').length === cardArray.length
+  ) {
     setTimeout(() => {
       playAgainBtn.disabled = false;
-      const victoryMessage = document.querySelector('#victory-message');
-      victoryMessage.classList.remove('hidden');
+      const victoryMessage = document.querySelector("#victory-message");
+      victoryMessage.classList.remove("hidden");
       setTimeout(() => {
-        victoryMessage.classList.add('show');
+        victoryMessage.classList.add("show");
       }, 10);
     }, 500);
   }
 }
 
-// Add event listener for the play again button
-playAgainBtn.addEventListener('click', resetGame);
+playAgainBtn.addEventListener("click", resetGame);
 
-// Initialize game when DOM is loaded
-document.addEventListener('DOMContentLoaded', loadCards);
+document.addEventListener("DOMContentLoaded", loadCards);
