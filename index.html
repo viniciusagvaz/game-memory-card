@@ -8,10 +8,13 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
+    <div id="reference-grid"></div>
     <h3>Score:<span id="result"></span></h3>
-
+    <h1 id="victory-message" class="victory-message hidden">Congratulations! You found all matches!</h1>
     <div id="grid"></div>
-
-    <script src="app.js" charset="utf-8"></script>
+    <div class="button-container">
+      <button id="play-again" class="play-again-btn">Play Again</button>
+    </div>
+    <script type="module" src="app.js"></script>
   </body>
 </html>

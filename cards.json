@@ -1,0 +1,52 @@
+{
+  "cards": [
+    {
+      "name": "aquarius",
+      "img": "icons/aquarius.svg"
+    },
+    {
+      "name": "pisces",
+      "img": "icons/pisces.svg"
+    },
+    {
+      "name": "aries",
+      "img": "icons/aries.svg"
+    },
+    {
+      "name": "taurus",
+      "img": "icons/taurus.svg"
+    },
+    {
+      "name": "gemini",
+      "img": "icons/gemini.svg"
+    },
+    {
+      "name": "cancer",
+      "img": "icons/cancer.svg"
+    },
+    {
+      "name": "leo",
+      "img": "icons/leo.svg"
+    },
+    {
+      "name": "virgo",
+      "img": "icons/virgo.svg"
+    },
+    {
+      "name": "libra",
+      "img": "icons/libra.svg"
+    },
+    {
+      "name": "scorpio",
+      "img": "icons/scorpio.svg"
+    },
+    {
+      "name": "sagittarius",
+      "img": "icons/sagittarius.svg"
+    },
+    {
+      "name": "capricorn",
+      "img": "icons/capricorn.svg"
+    }
+  ]
+}
