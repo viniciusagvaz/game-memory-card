@@ -16,6 +16,7 @@ async function loadCards() {
   try {
     const response = await fetch("./cards.json");
     const data = await response.json();
+
     createReferenceGrid(data.cards);
     cardArray = [...data.cards, ...data.cards];
     cardArray = shuffleCards(cardArray);
@@ -59,16 +60,23 @@ function initializeGame() {
   cardArray.forEach((card, index) => {
     const cardElement = createCardElement({ ...card, id: index });
     cardElement.addEventListener("click", handleCardClick);
-    cardElement.addEventListener("touchstart", handleCardClick, { passive: false });
+    cardElement.addEventListener("touchstart", handleCardClick, {
+      passive: false,
+    });
     gridDisplay.appendChild(cardElement);
   });
 }
 
 function handleCardClick(event) {
   event.preventDefault();
-  
-  const card = event.target.closest('.card');
-  if (!card || cardsChosenIds.includes(card.getAttribute("data-id")) || cardsChosen.length >= 2) return;
+
+  const card = event.target.closest(".card");
+  if (
+    !card ||
+    cardsChosenIds.includes(card.getAttribute("data-id")) ||
+    cardsChosen.length >= 2
+  )
+    return;
 
   const cardId = card.getAttribute("data-id");
   flipCard(card);
