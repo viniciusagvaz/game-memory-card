@@ -4,12 +4,10 @@ import {
   flipCard,
   shuffleCards,
 } from "./gameLogic.js";
-import { ScoreManager } from "./scoreManager.js";
 
 let cardArray = [];
 let cardsChosen = [];
 let cardsChosenIds = [];
-const scoreManager = new ScoreManager();
 const playAgainBtn = document.querySelector("#play-again");
 
 async function loadCards() {
@@ -47,6 +45,7 @@ function markReferenceAsMatched(cardName) {
   const referenceCard = document.querySelector(
     `[data-reference="${cardName}"]`
   );
+
   if (referenceCard) {
     referenceCard.classList.add("matched");
   }
@@ -55,7 +54,6 @@ function markReferenceAsMatched(cardName) {
 function initializeGame() {
   const gridDisplay = document.querySelector("#grid");
   gridDisplay.innerHTML = "";
-  scoreManager.resetScore();
 
   cardArray.forEach((card, index) => {
     const cardElement = createCardElement({ ...card, id: index });
@@ -69,8 +67,8 @@ function initializeGame() {
 
 function handleCardClick(event) {
   event.preventDefault();
-
   const card = event.target.closest(".card");
+
   if (
     !card ||
     cardsChosenIds.includes(card.getAttribute("data-id")) ||
@@ -95,8 +93,6 @@ function resetGame() {
   const gridDisplay = document.querySelector("#grid");
   gridDisplay.innerHTML = "";
 
-  scoreManager.resetScore();
-
   cardsChosen = [];
   cardsChosenIds = [];
 
@@ -118,7 +114,6 @@ function evaluateMatch() {
       card.setAttribute("matched", "true");
     });
     markReferenceAsMatched(cardName);
-    scoreManager.incrementScore();
   } else {
     cardsChosen.forEach((card) => {
       setTimeout(() => flipCard(card), 500);
