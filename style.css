@@ -4,6 +4,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  font-size: 62.5%;
 }
 
 .card {
@@ -53,11 +54,11 @@ body {
 }
 
 .card[matched="true"] {
-  translate: 0 -200%;
-  transform: rotateX(-360deg);
+  transform: rotateX(-360deg) rotateY(360deg) rotateZ(360deg) scale(0.25);
   opacity: 0;
-  transition: transform 1s ease-in-out, opacity 2s ease-in-out,
-    translate 2.5s ease-in-out;
+  cursor: default;
+  transition: transform 1s ease-in-out, opacity 1.5s ease-in-out;
+  z-index: -1;
 }
 
 .card img {
@@ -78,26 +79,10 @@ body {
   touch-action: manipulation;
 }
 
-h3 {
-  max-width: fit-content;
-  color: #ffffff;
-  background-color: rgba(76, 0, 176, 0.8);
-  text-align: left;
-  font-size: 1.5rem;
-  padding: 1rem 2rem 1rem 5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#result {
-  margin-left: 10px;
-  font-weight: bold;
-  color: #ffd700;
-}
-
 header {
   max-width: 1440px;
   width: 100%;
-  margin: 2rem auto;
+  padding-top: 2rem;
 }
 
 #reference-grid {
@@ -113,8 +98,8 @@ header {
 .reference-card {
   width: 40px;
   height: 40px;
-  margin: 3px;
-  padding: 5px;
+  margin: 0.188rem;
+  padding: 0.313rem;
   position: relative;
   border-radius: 8px;
   background: url("./card-back.jpg") no-repeat center center / cover;
@@ -137,7 +122,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: bold;
   box-shadow: 0 2px 8px rgba(0, 200, 83, 0.3);
   z-index: 1;
@@ -152,13 +137,13 @@ header {
 .button-container {
   display: flex;
   justify-content: center;
-  margin: 20px auto;
-  padding: 20px;
+  margin: 1.25rem auto;
+  padding: 1.25rem;
 }
 
 .play-again-btn {
-  padding: 15px 30px;
-  font-size: 18px;
+  padding: 0.938rem 1.875rem;
+  font-size: 1.8rem;
   background: linear-gradient(135deg, #6e00ff, #4c00b0);
   color: white;
   border: none;
@@ -196,10 +181,11 @@ header {
   text-align: center;
   color: #ffd700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  font-size: 1.8em;
+  font-size: 1.8rem;
   opacity: 0;
   transform: translateY(-20px);
   transition: all 0.5s ease;
+  margin: 1.25rem auto;
 }
 
 .victory-message.show {
@@ -228,28 +214,24 @@ header {
   .reference-card {
     width: 50px;
     height: 50px;
-    margin: 4px;
-    padding: 8px;
-  }
-
-  h3 {
-    font-size: 1.8rem;
+    margin: 0.25rem;
+    padding: 0.5rem;
   }
 
   .victory-message {
-    font-size: 2em;
+    font-size: 2.6rem;
   }
 }
 
 footer {
   text-align: center;
-  margin: 3rem ;
-  font-size: 1rem;
+  margin: 3rem;
+  font-size: 1.6rem;
 
   p,
-  a { 
+  a {
     margin: 0;
-    color: rgba(76, 0, 176, 0.8)
+    color: rgba(76, 0, 176, 0.8);
   }
 }
 
@@ -270,16 +252,12 @@ footer {
   .reference-card {
     width: 60px;
     height: 60px;
-    margin: 5px;
-    padding: 10px;
-  }
-
-  h3 {
-    font-size: 2rem;
+    margin: 0.313rem;
+    padding: 0.625rem;
   }
 
   .victory-message {
-    font-size: 2.2em;
+    font-size: 3rem;
   }
 }
 
@@ -293,7 +271,7 @@ footer {
 
   #grid {
     grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
+    gap: 1rem;
     max-width: 1200px;
   }
 
@@ -302,17 +280,12 @@ footer {
     height: 65px;
   }
 
-  h3 {
-    font-size: 2rem;
-  }
-
   .victory-message {
-    font-size: 2.5em;
+    font-size: 3.4rem;
   }
 }
 
 @media screen and (width >= 1441px) {
-
   #grid {
     max-width: 1400px;
   }
@@ -340,28 +313,22 @@ footer {
   .reference-card {
     width: 35px;
     height: 35px;
-    margin: 2px;
-    padding: 4px;
-  }
-
-  h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-    padding: 5px;
+    margin: 0.125rem;
+    padding: 0.25rem;
   }
 
   .victory-message {
-    font-size: 1.5em;
-    margin: 10px auto;
+    font-size: 2rem;
+    margin: 0.625rem auto;
   }
 
   .button-container {
-    margin: 10px auto;
-    padding: 10px;
+    margin: 0.625rem auto;
+    padding: 0.625rem;
   }
 
   .play-again-btn {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 0.625rem 1.25rem;
+    font-size: 1.6rem;
   }
 }
