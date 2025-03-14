@@ -1,0 +1,15 @@
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  .aside-left,
+  .aside-right {
+    display: none;
+  }
+
+  main {
+    margin: 0;
+    padding: 1rem;
+  }
+
+  #grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

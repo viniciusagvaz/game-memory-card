@@ -1,0 +1,58 @@
+.play-again {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.play-again.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.play-again__button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    var(--secondary-color),
+    var(--primary-color)
+  );
+  border: none;
+  border-radius: 3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0.4rem 1.5rem rgba(76, 0, 176, 0.3);
+}
+
+.play-again__button:not(:disabled):hover {
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.6rem 2rem rgba(76, 0, 176, 0.4);
+  background: linear-gradient(135deg, #7d1fff, #5a00d3);
+}
+
+.play-again__button:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+}
+
+.play-again__button:disabled {
+  background: linear-gradient(135deg, #9e9e9e, #757575);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.play-again__icon {
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.play-again__button:not(:disabled):hover .play-again__icon {
+  transform: rotate(180deg);
+}

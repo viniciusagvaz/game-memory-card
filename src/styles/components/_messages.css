@@ -1,0 +1,19 @@
+.victory-message {
+  text-align: center;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 1.8rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.5s ease;
+  margin: 1.25rem auto;
+}
+
+.victory-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hidden {
+  display: none;
+}

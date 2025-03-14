@@ -4,11 +4,9 @@ import {
   flipCard,
   shuffleCards,
 } from "./gameLogic.js";
-
 let cardArray = [];
 let cardsChosen = [];
 let cardsChosenIds = [];
-const playAgainBtn = document.querySelector("#play-again");
 
 async function loadCards() {
   try {
@@ -18,7 +16,6 @@ async function loadCards() {
     createReferenceGrid(data.cards);
     cardArray = [...data.cards, ...data.cards];
     cardArray = shuffleCards(cardArray);
-    playAgainBtn.disabled = true;
     initializeGame();
   } catch (error) {
     console.error("Error loading cards:", error);
@@ -27,18 +24,24 @@ async function loadCards() {
 
 function createReferenceGrid(cards) {
   const referenceGrid = document.querySelector("#reference-grid");
+  
   cards.forEach((card) => {
-    const referenceCard = document.createElement("div");
-    referenceCard.classList.add("reference-card");
-    referenceCard.setAttribute("data-reference", card.name);
-
-    const cardImage = document.createElement("img");
-    cardImage.setAttribute("src", card.img);
-    cardImage.setAttribute("alt", card.name);
-
-    referenceCard.appendChild(cardImage);
+    const referenceCard = createReferenceCard(card);
     referenceGrid.appendChild(referenceCard);
   });
+}
+
+function createReferenceCard(card) {
+  const referenceCard = document.createElement("div");
+  referenceCard.classList.add("reference-card");
+  referenceCard.setAttribute("data-reference", card.name);
+
+  const cardImage = document.createElement("img");
+  cardImage.setAttribute("src", card.img);
+  cardImage.setAttribute("alt", card.name);
+
+  referenceCard.appendChild(cardImage);
+  return referenceCard;
 }
 
 function markReferenceAsMatched(cardName) {
@@ -88,19 +91,20 @@ function handleCardClick(event) {
 
 function resetGame() {
   const referenceGrid = document.querySelector("#reference-grid");
-  referenceGrid.innerHTML = "";
-
   const gridDisplay = document.querySelector("#grid");
-  gridDisplay.innerHTML = "";
+  const subtitle = document.querySelector(".header__subtitle");
+  const playAgain = document.querySelector(".play-again");
+  const playAgainBtn = document.querySelector("#play-again-btn");
 
+  if (referenceGrid) referenceGrid.innerHTML = "";
+  if (gridDisplay) gridDisplay.innerHTML = "";
+  
   cardsChosen = [];
   cardsChosenIds = [];
 
-  playAgainBtn.disabled = true;
-
-  const victoryMessage = document.querySelector("#victory-message");
-  victoryMessage.classList.add("hidden");
-  victoryMessage.classList.remove("show");
+  if (subtitle) subtitle.textContent = "Find All Zodiac Sign Matches!";
+  if (playAgain) playAgain.classList.remove("show");
+  if (playAgainBtn) playAgainBtn.disabled = true;
 
   loadCards();
 }
@@ -127,16 +131,23 @@ function evaluateMatch() {
     document.querySelectorAll('[matched="true"]').length === cardArray.length
   ) {
     setTimeout(() => {
+      const victoryMessage = document.querySelector(".header__subtitle");
+      const playAgain = document.querySelector(".play-again");
+      const playAgainBtn = document.querySelector("#play-again-btn");
+
+      console.log('caiu aqui');
+      playAgain.classList.add("show");
       playAgainBtn.disabled = false;
-      const victoryMessage = document.querySelector("#victory-message");
-      victoryMessage.classList.remove("hidden");
+
       setTimeout(() => {
-        victoryMessage.classList.add("show");
+        victoryMessage.textContent = "You won! 🎉🎉🎉";
       }, 10);
     }, 500);
   }
 }
 
-playAgainBtn.addEventListener("click", resetGame);
-
-document.addEventListener("DOMContentLoaded", loadCards);
+document.addEventListener("DOMContentLoaded", () => {
+  const playAgainBtn = document.querySelector("#play-again-btn");
+  playAgainBtn.addEventListener("click", resetGame);
+  loadCards();
+});

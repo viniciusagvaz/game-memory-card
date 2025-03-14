@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #4c00b0;
+  --secondary-color: #6e00ff;
+  --success-color: #00c853;
+  --text-color: #333;
+  --gold-color: #ffd700;
+
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+
+  --transition-speed: 0.3s;
+  --flip-duration: 0.6s;
+} 

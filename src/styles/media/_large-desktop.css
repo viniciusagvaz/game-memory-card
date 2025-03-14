@@ -1,0 +1,51 @@
+@media screen and (width >= 1025px) {
+
+  .card {
+    width: 100px;
+    height: 100px;
+    margin: 1.5rem;
+    padding: 2rem;
+  }
+
+  .reference-card {
+    width: 80px;
+    height: 80px;
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+
+  .victory-message {
+    font-size: 4rem;
+  }
+
+  .header {
+    max-width: 600px;
+    padding: 3rem;
+  }
+
+  .header__title {
+    font-size: 4.2rem;
+  }
+
+  .header__subtitle {
+    font-size: 2.4rem;
+  }
+
+  .play-again__button {
+    padding: 1.5rem 3rem;
+    font-size: 2.2rem;
+  }
+
+  .play-again__icon {
+    font-size: 2.4rem;
+  }
+
+  .aside-left,
+  .aside-right {
+    padding: 3rem;
+  }
+
+  .reference-grid {
+    gap: 2rem;
+  }
+}

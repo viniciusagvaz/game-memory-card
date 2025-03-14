@@ -1,0 +1,10 @@
+export const GAME_CONFIG = {
+  FLIP_DELAY: 500,
+  MATCH_DELAY: 300,
+  ANIMATION_DURATION: 600,
+  GRID_SIZES: {
+    MOBILE: 3,
+    TABLET: 4,
+    DESKTOP: 6,
+  },
+};

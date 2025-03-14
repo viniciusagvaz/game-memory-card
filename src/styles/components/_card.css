@@ -1,0 +1,58 @@
+.card {
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  transform-origin: center center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card .card-front,
+.card .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  top: 0;
+  left: 0;
+  border: 1px solid #ccc;
+}
+
+.card .card-front {
+  background: url("../../imgs/card-back.webp") no-repeat center center / cover;
+  background: url("../../imgs/card-back.webp") no-repeat center center / cover;
+  transform: rotateX(0deg);
+}
+
+.card .card-back {
+  transform: rotateX(-180deg);
+  background: url("../../imgs/card-back.webp") no-repeat center center / cover;
+}
+
+.card.flipped {
+  transform: rotateX(180deg);
+}
+
+.card[matched="true"] {
+  transform: rotateX(-360deg) rotateY(360deg) rotateZ(360deg) scale(0.25);
+  opacity: 0;
+  cursor: default;
+  transition: transform 1s ease-in-out, opacity 1.5s ease-in-out;
+  z-index: -1;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

@@ -1,0 +1,75 @@
+@media screen and (width >= 481px) {
+  main {
+    flex-direction: column;
+    margin: 0 1rem;
+  }
+
+  .card {
+    width: 45px;
+    height: 45px;
+    margin: 0.75rem;
+    padding: 1rem;
+  }
+
+  #grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin: 0 auto;
+    max-width: 450px;
+  }
+
+  .aside-left,
+  .aside-right {
+    top: 50px;
+    bottom: 0;
+  }
+
+  .aside-left {
+    left: 0;
+  }
+
+  .aside-right {
+    right: 0;
+  }
+
+  .reference-grid {
+    gap: 0;
+    padding: 0.5rem;
+  }
+
+  .reference-card {
+    width: 25px;
+    height: 25px;
+    margin: 0.25rem;
+    padding: 0.5rem;
+  }
+
+  .victory-message {
+    font-size: 2.6rem;
+  }
+
+  .header {
+    padding: 1.5rem;
+  }
+
+  .header__title {
+    font-size: 2.8rem;
+  }
+
+  .header__subtitle {
+    font-size: 1.6rem;
+  }
+
+  .header__score {
+    font-size: 2rem;
+  }
+
+  .play-again {
+    margin: 1.5rem auto;
+  }
+
+  .play-again__button {
+    padding: 0.9rem 1.8rem;
+    font-size: 1.7rem;
+  }
+}

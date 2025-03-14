@@ -1,0 +1,49 @@
+@media screen and (max-width: 480px) {
+  #grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .reference-card {
+    width: 30px;
+    height: 30px;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 50px;
+    height: 50px;
+  }
+
+  .header__title {
+    font-size: 2.4rem;
+  }
+
+  .header__subtitle {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .header__score {
+    font-size: 1.8rem;
+  }
+
+  .play-again {
+    margin: 1rem auto;
+  }
+
+  .play-again__button {
+    padding: 0.8rem 1.6rem;
+    font-size: 1.6rem;
+  }
+
+  .play-again__icon {
+    font-size: 1.8rem;
+  }
+}

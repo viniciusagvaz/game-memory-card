@@ -9,23 +9,29 @@
     <meta name="keywords" content="Memory Game" />
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
+
     <title>Memory Game</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <link rel="stylesheet" type="text/css" href="src/styles/main.css" />
   </head>
   <body>
-    <header>
-      <div id="reference-grid" />
+    <header class="header">
+      <h1 class="header__title">Memory Game</h1>
+      <h5 class="header__subtitle">Find All Zodiac Sign Matches!</h5>
     </header>
 
     <main>
-      <h1 id="victory-message" class="victory-message hidden">
-        Congratulations! You found all matches!
-      </h1>
-      <div class="button-container">
-        <button id="play-again" class="play-again-btn hidden">
-          Play Again
+      <div class="play-again">
+        <button id="play-again-btn" class="play-again__button" disabled>
+          <span class="play-again__icon">↺</span>
+          <span class="play-again__text">Play Again</span>
         </button>
       </div>
+
+      <aside class="reference-aside">
+        <div id="reference-grid" class="reference-grid" />
+      </aside>
+
       <div id="grid" />
     </main>
 
