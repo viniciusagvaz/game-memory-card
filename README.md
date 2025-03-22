@@ -1,4 +1,4 @@
-<h1>This is a memory-card game by Ania Kubów</h1>
+<h1>This is a memory-card game</h1>
 
 It's the second functional game that I'll be learning for the next few days a total of seven games will be taught in this course.
 <a>https://viniciusagvaz.github.io/game-memory-card/</a>
@@ -35,11 +35,3 @@ It's the second functional game that I'll be learning for the next few days a to
 
 <div>
 <hr>
-<div align= "center">
-Check out her repositories at her GitHub page and the course itself:
-
-
-<a>https://github.com/kubowania</a>
-
-<a>https://www.youtube.com/watch?v=ec8vSKJuZTk</a>
-</div>
